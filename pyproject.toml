@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "easy_utils"
+version = "0.1.0"
+description = "A collection of easy-to-use utility functions for Python projects."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Mingi Kwon", email = "mingikwon@cinelingo-labs.com" }]
+dependencies = [
+    "natsort"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]     # discover packages under src/
+
+# (optional) simple CLI
+[project.scripts]
+easy_utils = "easy_utils.cli:main"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8",
+  "pytest-cov",
+  "pytest-mock",      # thin wrapper over unittest.mock
+  "hypothesis",       # property-based tests (optional)
+  "ruff", "mypy"      # optional quality gates
+]
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-markers --disable-warnings"
+# Optional: coverage config
+# addopts = "-q --strict-markers --disable-warnings --cov=your_pkg --cov-report=term-missing"
+testpaths = ["tests"]
+xfail_strict = true
+# Optional markers you’ll use
+# markers = [
+#  "slow: long-running tests",
+#  "gpu: requires GPU",
+#  "integration: touches network/db/filesystem extensively"
+# ]
+
+[tool.coverage.run]
+branch = true
+source = ["src/easy_utils"]
+
+[tool.coverage.report]
+skip_empty = true
+show_missing = true
+fail_under = 85
