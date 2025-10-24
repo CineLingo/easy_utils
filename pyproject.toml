@@ -15,7 +15,7 @@ dependencies = [
     "pydantic",
     "pandas",
     "numpy",
-    "yaml",
+    "pyyaml",
 ]
 
 [tool.setuptools]
