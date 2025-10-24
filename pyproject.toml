@@ -13,7 +13,9 @@ authors = [{ name = "Mingi Kwon", email = "mingikwon@cinelingo-labs.com" }]
 dependencies = [
     "natsort",
     "pydantic",
-    "pandas"
+    "pandas",
+    "numpy",
+    "yaml",
 ]
 
 [tool.setuptools]
