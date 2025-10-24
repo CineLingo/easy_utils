@@ -84,6 +84,20 @@ def extlist(path,
 
     return natsorted(results) if sort else results
 
+def ensure_directory(path: str) -> bool:
+    """
+    path가 디렉토리인지 판별하고, 없으면 생성함.
+    디렉토리이면 True, 아니면 False 반환.
+    """
+    # 디렉토리로 판별하는 기준:
+    # 1) 실제 디렉토리이거나
+    # 2) 경로가 / (또는 \) 로 끝나거나
+    # 3) 확장자가 없는 경우
+    if os.path.isdir(path) or path.endswith(os.sep) or not os.path.splitext(path)[1]:
+        os.makedirs(path, exist_ok=True)
+        return True
+    return False
+
 
 if __name__ == "__main__":
     # Example usage

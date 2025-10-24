@@ -73,6 +73,18 @@ def printline(*args, sep=' ', abs_path=False, prefix_color='gray', string_color=
 
     print(f'{loc_str} {string}')
 
+def find_assets_path(package_name):
+    package_path = find_package_path(package_name)
+    parrent_path = os.path.dirname(package_path)
+    root_path = os.path.dirname(parrent_path)
+    assets_path = os.path.join(root_path, 'assets')
+    return assets_path
+
+def find_root_path(package_name):
+    package_path = find_package_path(package_name)
+    parrent_path = os.path.dirname(package_path)
+    root_path = os.path.dirname(parrent_path)
+    return root_path
 
 def find_package_path(package_name):
     # 패키지 로더 가져오기
@@ -94,7 +106,6 @@ def copy_all_files(src, dst):
     # except EXCEPTION_FOLDERS and EXCEPTION_EXTENSIONS
     if not os.path.exists(dst):
         os.makedirs(dst)
-
 
     for root, dirs, files in os.walk(src):
         # 제외할 폴더 필터링
