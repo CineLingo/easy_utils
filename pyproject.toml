@@ -12,7 +12,8 @@ license = { text = "MIT" }
 authors = [{ name = "Mingi Kwon", email = "mingikwon@cinelingo-labs.com" }]
 dependencies = [
     "natsort",
-    "pydantic"
+    "pydantic",
+    "pandas"
 ]
 
 [tool.setuptools]
