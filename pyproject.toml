@@ -16,6 +16,7 @@ dependencies = [
     "pandas",
     "numpy",
     "pyyaml",
+    "Jinja2"
 ]
 
 [tool.setuptools]
